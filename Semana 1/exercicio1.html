@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 1</title>
+    <script>
+        let numero;
+        do{
+            numero = prompt("Informe um número inteiro e positivo:","");
+        }
+        while(isNaN(numero)){
+            let int = numero % 2;
+        switch(int){
+            case 0:
+                alert("Número PAR!");
+                break;
+            case 1:
+                alert("Número IMPAR!");
+                break;
+            default:
+                alert("Valor inválido!")
+            }
+    
+        }
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

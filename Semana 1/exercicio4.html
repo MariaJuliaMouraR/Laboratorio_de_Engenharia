@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 4</title>
+
+
+    <script>
+        let inputdado = prompt("Informe um dado:");
+        
+        if (inputdado !== null){
+
+            let  checkType = prompt("Deseja verificar o tipo do dado informado? ");
+
+            if (checkType.toLowerCase() == "sim"){
+                if(!isNaN(inputdado))
+                {
+                    document.write("O dado informado é um número");
+                }
+                else{
+                    document.write("O dado informado é uma string!");
+                }
+            }
+            else{
+                document.write("Obrigado por visitar esta pagina");
+            }
+        }
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

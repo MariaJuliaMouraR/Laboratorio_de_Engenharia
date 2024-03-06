@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 2</title>
+    <script>
+        let numero;
+        let cont = 0;
+        do{
+            numero = prompt("Informe um número inteiro e positivo:","");
+        }
+        while(isNaN(numero))
+        {
+            for(int = 1; int <= (numero); int++){
+                if (numero % int == 0){
+                    cont ++;
+                }
+
+            }
+            if (cont <= 2 && (numero) != 1){
+                alert("Número PRIMO!");
+            }
+            else{
+                alert("Número NÃO PRIMO!")
+            }
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
+
+
+
+   

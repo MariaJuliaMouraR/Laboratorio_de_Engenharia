@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 3</title>
+    <script>
+        let numero;
+        let fatorial = 0;
+        do {
+            numero = prompt("Informe um número inteiro e positivo: ","");
+        }
+        while(isNaN(numero)){
+            let fatorial = (numero);
+
+            for(let int = ((numero) - 1); int > 0; int--)
+            {
+                fatorial *= int;              
+            }
+            alert("O fatorial do número digitado: "+numero+" é: "+fatorial );
+        }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
