@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+</head>
+<body>
+    <h1>Relógio</h1>
+    <h2 id="clock"></h2>
+
+    <script>
+        function updateClock() { // responsável por obter a hora atual / formatá-la / atualizar
+            let now = new Date();
+            let hours = now.getHours().toString().padStart(2, '0');  // Obtém as horas, converte para string e se a string tiver menos de 2 caracteres, 
+                                                                    // adiciona um zero à esquerda para manter o formato consistente.
+            let minutes = now.getMinutes().toString().padStart(2, '0'); // Obtém os minutos. etc..
+            let seconds = now.getSeconds().toString().padStart(2, '0'); // Obtém os segundos 
+            let formattedTime = `${hours}:${minutes}:${seconds}`;       //Criando uma string.  'formattedTime' que combina as horas, minutos e segundos. 
+            document.getElementById('clock').textContent = formattedTime; // Atualiza o conteúdo 
+        }
+
+        setInterval(updateClock, 1000); // Chama a função a cada 1 segundo
+    </script>
+</body>
+</html>

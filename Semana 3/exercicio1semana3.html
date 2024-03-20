@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+</head>
+<body>
+    <h2>Data Atual</h2>
+    <script>
+        let now = new Date();
+        let daysOfWeek = ['domingo', 'segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira', 'sábado'];
+        let months = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+
+        let dayOfWeek = daysOfWeek[now.getDay()];
+        let dayOfMonth = now.getDate();
+        let month = months[now.getMonth()];
+        let year = now.getFullYear();
+
+        let formattedDate = `${dayOfWeek}, ${dayOfMonth} de ${month} de ${year}.`;
+
+        document.write(formattedDate); 
+
+        //let currentDate = new Date();
+        //let dayWeek = currentDate.toLocaleDateString('pt-BR', { weekday: 'long' });
+        //let dayMonth = currentDate.getDate();
+        //let month = currentDate.toLocaleDateString('pt-BR', { month: 'long' });
+        //let year = currentDate.getFullYear();
+
+        //let formattedDate = `${dayWeek}, ${dayMonth} de ${month} de ${year}.`;
+
+    
+    </script>
+</body>
+</html>
+
+
+
+
+        
+
