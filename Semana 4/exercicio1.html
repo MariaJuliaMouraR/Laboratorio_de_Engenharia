@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+</head>
+<body>
+    <h1>Formulário de Cadastro</h1>
+    <br>
+    <div id="form-container">
+        <div class="form-group">
+            <label for="tipo">Selecione o campo desejado: </label>
+            <br>
+            <br>
+            <input type="radio" name="tipo" id="professor" value="professor">
+            <label for="professor">Professor</label>
+            <input type="radio" name="tipo" id="aluno" value="aluno">
+            <label for="aluno">Aluno</label>
+        </div>
+        <br>
+        <form id="cadastro-form">
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="data-nascimento">Data Nascimento:</label>
+                <input type="text" id="data-nascimento" name="data-nascimento" placeholder="dd/mm/aaaa" required>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="telefone-fixo">Telefone Fixo:</label>
+                <input type="tel" id="telefone-fixo" name="telefone-fixo">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="telefone-celular">Telefone Celular:</label>
+                <input type="tel" id="telefone-celular" name="telefone-celular">
+            </div>
+            <br>
+            <div id="professor-campos" class="form-group" style="display: none;">
+                <label for="area">Área:</label>
+                <input type="text" id="area" name="area">
+                <br>
+                <br>
+                <label for="matricula">Matrícula:</label>
+                <input type="text" id="matricula" name="matricula">
+                <br>
+                <br>
+                <label for="lattes">Lattes:</label>
+                <input type="text" id="lattes" name="lattes">
+                <br>
+                <br>
+            </div>
+            <div id="aluno-campos" class="form-group" style="display: none;">
+                <label for="curso">Curso:</label>
+                <input type="text" id="curso" name="curso">
+                <br>
+                <br>
+                <label for="matricula">Matrícula:</label>
+                <input type="text" id="matricula" name="matricula">
+                <br>
+                <br>
+            </div>
+            <div class="form-group">
+                <button type="submit">Enviar</button>
+                <button type="button" onclick="resetForm()">Redefinir</button>
+            </div>
+        </form>
+        <div id="dados-cadastrados">
+            <h2>Dados Cadastrados:</h2>
+            <ul id="dados-lista"></ul>
+        </div>
+    </div>
+
+
+    <script>
+        class Usuario {
+            constructor(tipo, nome, email, dataNascimento, telefoneFixo, telefoneCelular, curso, area, matricula, lattes) {
+                this.Tipo = tipo;
+                this.Nome = nome;
+                this.Email = email;
+                this.DataNascimento = dataNascimento;
+                this.TelefoneFixo = telefoneFixo;
+                this.TelefoneCelular = telefoneCelular;
+                this.Curso = curso;
+                this.Area = area;
+                this.Matricula = matricula;
+                this.Lattes = lattes;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            let form = document.getElementById('cadastro-form');
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                let tipo = document.querySelector('input[name="tipo"]:checked').value;
+                let nome = document.getElementById('nome').value;
+                let email = document.getElementById('email').value;
+                let dataNascimento = document.getElementById('data-nascimento').value;
+                let telefoneFixo = document.getElementById('telefone-fixo').value;
+                let telefoneCelular = document.getElementById('telefone-celular').value;
+                let curso = '';
+                let area = '';
+                let matricula = '';
+                let lattes = '';
+
+                if (tipo === 'professor') {
+                    area = document.getElementById('area').value;
+                    matricula = document.getElementById('matricula').value;
+                    lattes = document.getElementById('lattes').value;
+                } else if (tipo === 'aluno') {
+                    curso = document.getElementById('curso').value;
+                    matricula = document.getElementById('matricula').value;
+                }
+
+                let usuario = new Usuario(tipo, nome, email, dataNascimento, telefoneFixo, telefoneCelular, curso, area, matricula, lattes);
+                exibirDados(usuario);
+                // Aqui  o código para enviar os dados para algum backend ou armazená-los localmente
+            });
+        });
+
+        function resetForm() {
+            document.getElementById('cadastro-form').reset();
+            document.getElementById('dados-cadastrados').style.display = 'none';
+        }
+
+        // Exibir os dados do usuario:
+        function exibirDados(usuario) {
+            let dadosLista = document.getElementById('dados-lista');
+            dadosLista.innerHTML = '';
+            Object.keys(usuario).forEach(key => {
+                let li = document.createElement('li');
+                li.textContent = `${key}: ${usuario[key]}`;
+                dadosLista.appendChild(li);
+            });
+            document.getElementById('dados-cadastrados').style.display = 'block';
+        }
+
+        document.querySelectorAll('input[name="tipo"]').forEach((radio) => {
+            radio.addEventListener('change', function () {
+                let professorcampos = document.getElementById('professor-campos');
+                let alunocampos = document.getElementById('aluno-campos');
+
+                if (radio.value === 'professor') {
+                    professorcampos.style.display = 'block';
+                    alunocampos.style.display = 'none';
+                } else if (radio.value === 'aluno') {
+                    alunocampos.style.display = 'block';
+                    professorcampos.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
